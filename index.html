@@ -15,30 +15,31 @@
 <body>
     <div id="container my-3">
         <h3>Book Tracker</h2>
+            <p>To add a new Book to your list, please fill all the spaces below and click on "Add Book".</p>
         <hr>
-            <form id="bookDetails" onsubmit="mainFunction(event)" action="#">
-
+            <form id="bookDetails" onsubmit="mainFunction(event)" action="#" class="form-class">
                 <label class="col-form-label">Title:</label>
-                <input type="text" id ="title" class="form-control" placeholder="Book Title">
+                <input type="text" id ="title" class="form-control" placeholder="Book Title" required>
                 <label class="col-form-label">Author:</label>
-                <input type="text" id ="author" class="form-control" placeholder="Author">
+                <input type="text" id ="author" class="form-control" placeholder="Author" required>
                 <label class="col-form-label">Add Date:</label>
-                <input type="date" id ="addDate" class="form-control">
+                <input type="date" id ="addDate" class="form-control" required>
                 <label class="col-form-label">Due Date:</label>
-                <input type="date" id ="dueDate" class="form-control">
-                <label class="col-form-label">Note:</label>
-                <input type="number" id ="note" class="form-control">
+                <input type="date" id ="dueDate" class="form-control" required>
                 <label class="col-form-label">Status:</label>
-                <input type="text" id ="status" class="form-control mb-4">
-                
-                <div class="buttons">
-                    <input type="Submit" value="Add Book" class="button-style">           
-                    <input type="button" value="Delete Book" onclick="deleteRow('dataTable')" class="button-style">
-                </div>
+                <select name="drop1" id="status" class="form-control">
+                    <option value="Want to Read">Want to Read</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Read">Read</option>
+                </select>
+        
+                <!-- Button-->
+                <input type="Submit" value="Add Book" class="button-style"> 
             </form>
         
         <hr>
-        <h3>Book List</h3>
+        <h3 class="mb-3">Book List</h3>
+        <p>To remove a Book from your list, please select the checkbox from the desired row and click on "Delete Book".</p>
         <div id="rFormat">
         <table id="tableID" border="1px">
             <tr>
@@ -51,6 +52,7 @@
                 <td>Status</td>
             </tr>
         </table>
+        <input type="button" value="Delete Book" onclick="deleteRow('dataTable')" class="button-style">
         </div>
     </div>
 </body>

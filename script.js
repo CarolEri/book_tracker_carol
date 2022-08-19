@@ -9,11 +9,13 @@ function mainFunction(e) {
         author: document.getElementById('author').value,
         addDate: document.getElementById('addDate').value,
         dueDate: document.getElementById('dueDate').value,
-        note: document.getElementById('note').value,
-        status: document.getElementById('status').value  
+        status: document.getElementById('status').value,
+        note: reportNote(document.getElementById('status').value),
     }
+
     books.push(book);
-    //used to convert result to string
+    
+    //checking our array
     //var myJSON = JSON.stringify(books);
 
     document.forms[0].reset();
@@ -44,6 +46,18 @@ function mainFunction(e) {
     var cell7 = row.insertCell(6);
     cell7.innerHTML += p.status;
 
+}
+
+function reportNote(status) {
+    let note = '';
+
+    if (status == 'Read') {
+        note = 1
+    } else {
+        note = '--'
+    }
+
+    return note;
 }
 
 function deleteRow() {
