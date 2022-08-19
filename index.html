@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tracker</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="container my-3">
+        <h3>Book Tracker</h2>
+        <hr>
+            <form id="bookDetails" onsubmit="mainFunction(event)" action="#">
+
+                <label class="col-form-label">Title:</label>
+                <input type="text" id ="title" class="form-control" placeholder="Book Title">
+                <label class="col-form-label">Author:</label>
+                <input type="text" id ="author" class="form-control" placeholder="Author">
+                <label class="col-form-label">Add Date:</label>
+                <input type="date" id ="addDate" class="form-control">
+                <label class="col-form-label">Due Date:</label>
+                <input type="date" id ="dueDate" class="form-control">
+                <label class="col-form-label">Note:</label>
+                <input type="number" id ="note" class="form-control">
+                <label class="col-form-label">Status:</label>
+                <input type="text" id ="status" class="form-control mb-4">
+                
+                <div class="buttons">
+                    <input type="Submit" value="Add Book" class="button-style">           
+                    <input type="button" value="Delete Book" onclick="deleteRow('dataTable')" class="button-style">
+                </div>
+            </form>
+        
+        <hr>
+        <h3>Book List</h3>
+        <div id="rFormat">
+        <table id="tableID" border="1px">
+            <tr>
+                <td>Check</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Add Date</td>
+                <td>Due Date</td>
+                <td>Note</td>
+                <td>Status</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+body {
+    padding: 3rem;
+}
+
+.form-control {
+    max-width: 20rem;
+}
+
+.buttons {
+    display: flex;
+}
+
+.button-style {
+    color: white;
+    background-color: lightseagreen;
+    margin: 1rem;
+    height: 3rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    outline: auto;
+}
+
+table {
+    width: 50%;
+}
+
+td {
+    text-align: center;
+    vertical-align: top;
+}
