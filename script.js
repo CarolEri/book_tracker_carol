@@ -2,6 +2,8 @@ var books = [];
 function mainFunction(e) {
     //to stop form from resubmitting
     e.preventDefault(); 
+    var indexBook = books.length;
+    var noteBasedInStatus =reportNote(document.getElementById('status').value);
 
     var book = {
         title: document.getElementById('title').value,
@@ -9,7 +11,7 @@ function mainFunction(e) {
         addDate: document.getElementById('addDate').value,
         dueDate: document.getElementById('dueDate').value,
         status: document.getElementById('status').value,
-        note: reportNote(document.getElementById('status').value),
+        note: noteBasedInStatus,
     }
 
     books.push(book);
@@ -34,12 +36,34 @@ function mainFunction(e) {
     cell4.innerHTML += p.addDate;
     var cell5 = row.insertCell(4);
     cell5.innerHTML += p.dueDate;
+
+    var valuesRate = ["--", "1", "2", "3", "4", "5"];
+ 
+    var selectRate = document.createElement("select");
+    selectRate.name = "note"+indexBook;
+    selectRate.id = "note"+indexBook;
+ 
+    for (const val of valuesRate)
+    {
+        var optionRate = document.createElement("option");
+        optionRate.value = val;
+        optionRate.text = val.charAt(0).toUpperCase() + val.slice(1);
+        selectRate.appendChild(optionRate);
+    }
+ 
+    var label = document.createElement("label");
+    label.htmlFor = "rate";
+
     var cell6 = row.insertCell(5);
-    cell6.innerHTML += p.note;
+
+    selectRate.value = noteBasedInStatus;
+    cell6.appendChild(selectRate);
+
     var values = ["Want to Read", "Read", "Reading"];
  
     var select = document.createElement("select");
-    select.name = "status";
+    select.name = "status"+indexBook;
+    select.id = "status"+indexBook;
  
     for (const val of values) {
         var option = document.createElement("option");
@@ -58,7 +82,22 @@ function mainFunction(e) {
         }
     }
 
+    select.onchange = function() {myFunction(indexBook)};
+
     cell7.appendChild(select);
+
+    myFunction(indexBook);
+}
+
+function myFunction(teste) {
+    console.log(document.getElementById("status"+teste).value);
+    if (document.getElementById("status"+teste).value == "Read") {
+        document.getElementById("note"+teste).value = "1";
+        document.getElementById("note"+teste).removeAttribute("disabled");
+    } else {
+        document.getElementById("note"+teste).value = "--";
+        document.getElementById("note"+teste).setAttribute("disabled", "disabled");
+    }
 }
 
 function reportNote(status) {
