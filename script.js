@@ -1,4 +1,3 @@
-
 var books = [];
 function mainFunction(e) {
     //to stop form from resubmitting
@@ -14,16 +13,10 @@ function mainFunction(e) {
     }
 
     books.push(book);
-    
-    //checking our array
-    //var myJSON = JSON.stringify(books);
 
     document.forms[0].reset();
 
-    //display in Final Obejct div 
-    //document.getElementById("fObject").innerHTML = myJSON;
-
-    //display elements on table
+    //displaying elements on table
     var p = books[books.length-1]; //last item in the array
     var table = document.getElementById("tableID");
     var rowCount = table.rows.length;
@@ -43,9 +36,29 @@ function mainFunction(e) {
     cell5.innerHTML += p.dueDate;
     var cell6 = row.insertCell(5);
     cell6.innerHTML += p.note;
-    var cell7 = row.insertCell(6);
-    cell7.innerHTML += p.status;
+    var values = ["Want to Read", "Read", "Reading"];
+ 
+    var select = document.createElement("select");
+    select.name = "status";
+ 
+    for (const val of values) {
+        var option = document.createElement("option");
+        option.value = val;
+        option.text = val.charAt(0).toUpperCase() + val.slice(1);
+        select.appendChild(option);
+    }
+ 
+    var label = document.createElement("label");
+    label.htmlFor = "status";
 
+    var cell7 = row.insertCell(6);
+    for (var i=0; i<books.length; i++) {
+        if (books[i].status == p.status) {
+            select.value = books[i].status;
+        }
+    }
+
+    cell7.appendChild(select);
 }
 
 function reportNote(status) {

@@ -28,6 +28,7 @@
                 <input type="date" id ="dueDate" class="form-control" required>
                 <label class="col-form-label">Status:</label>
                 <select name="drop1" id="status" class="form-control">
+                    <option value="" disabled selected>Select the reading status</option>
                     <option value="Want to Read">Want to Read</option>
                     <option value="Reading">Reading</option>
                     <option value="Read">Read</option>
@@ -39,7 +40,7 @@
         
         <hr>
         <h3 class="mb-3">Book List</h3>
-        <p>To remove a Book from your list, please select the checkbox from the desired row and click on "Delete Book".</p>
+        <p>To remove a Book from your list, please select the checkbox from the desired row and click on "Delete Book". It is also possible to delete multiple rows at the same time.</p>
         <div id="rFormat">
         <table id="tableID" border="1px">
             <tr>
